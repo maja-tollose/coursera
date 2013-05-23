@@ -10,4 +10,5 @@ var server = http.createServer(
 );
 
 server.listen(8080);
+
 sys.puts("Server is running on 8080");
