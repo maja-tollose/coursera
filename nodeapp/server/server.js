@@ -1,14 +1,12 @@
-var sys = require("sys");
-var http = require("http");
+var express = require('express');
 
-var server = http.createServer(
-    function (request, response) {
-        response.writeHead(200, {"content-type":"text/plain"});
-        response.write("Hellow yo from AWS! And auto deployed from GIT!");
-        response.end();
-    }
-);
+var app = express.createServer(express.logger());
 
-server.listen(8080);
+app.get('/', function(request, response) {
+  response.send('Hello World!');
+});
 
-sys.puts("Server is running on 8080");
+var port = process.env.PORT || 5000;
+app.listen(port, function() {
+  console.log("Listening on " + port);
+});
